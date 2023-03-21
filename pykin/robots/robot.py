@@ -37,7 +37,7 @@ class Robot(URDFModel):
         self.gripper_name = gripper_name
 
         self.urdf_name = os.path.abspath(self.file_path)
-        self.mesh_path = os.path.abspath(self.file_path + "/../") + "/"
+        self.mesh_path = ""
         self.info = {}
         self.gripper = None
 
