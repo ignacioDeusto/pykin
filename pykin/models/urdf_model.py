@@ -154,6 +154,11 @@ class URDFModel(RobotModel):
         """
         for idx, elem_link in enumerate(self.root.findall("link")):
             link_frame = self._get_link_frame(idx, elem_link)
+            try:
+                link_frame.link.collision.gparam['filename'] = link_frame.link.collision.gparam['filename'].replace('file://','').replace('package://','')
+                link_frame.link.visual.gparam['filename'][0] = link_frame.link.visual.gparam['filename'][0].replace('file://','').replace('package://','')
+            except:
+                pass
             self._links[link_frame.link.name] = deepcopy(link_frame.link)
 
     def _set_joints(self):
